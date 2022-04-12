@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5"  style="	background: url({% static 'images/product-bg.jpg' %})" >
+    <div class="position-center-center">
+      <div class="container">
+        <h4>PAVSHOP PRODUCTS</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li class="active">Data</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!-- Products -->
+    <section class="shop-page padding-top-100 padding-bottom-100">
+      <div class="container">
+        <div class="row"> 
+          
+          <!-- Item Content -->
+          <div class="col-sm-9">
+            <div class="item-display">
+              <div class="row"> 
+                <!-- Products Select -->
+                <div class="col-xs-6">
+                  <div class="pull-left"> 
+                    
+                    <!-- Short By -->
+                    <select class="selectpicker">
+                      <option>Short By</option>
+                      <option>Short By</option>
+                      <option>Short By</option>
+                    </select>
+                    <!-- Filter By -->
+                    <select class="selectpicker">
+                      <option>Filter By</option>
+                      <option>Short By</option>
+                      <option>Short By</option>
+                    </select>
+                    
+                    <!-- GRID & LIST --> 
+                    <a href="#." class="grid-style"><i class="icon-grid"></i></a> <a href="#." class="list-style"><i class="icon-list"></i></a> </div>
+                </div>
+             
+              </div>
+            </div>
+            
+
+           
+            <!-- Popular Item Slide -->
+            <div class="papular-block row single-img-demos"> 
+     
+     
+              {% for product in products %}
+              <!-- Item -->
+              <div class="col-md-6">
+                <div class="item" style="margin-bottom: 18px;"> 
+                  <!-- Item img -->
+                 <div class="item-img" style="height: 274px;margin: 20px auto;padding: 10px;display: flex;justify-content: center;align-items: center;"> <img class="img-1" src="{{ product.image.url  }}   " alt="" > </a> 
+                    <!-- Overlay -->
+                    <div class="overlay" style="height: 100%;" >
+                      <div class="position-center-center">
+                        <div class="inn"><a href="{{product.image.url  }}  " data-lighter><i class="fas fa-search"></i></a>  <a href="#." ><i class="fas fa-heart"></i></a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Item Name -->
+                <div class="item-name"> <a href="{{product.get_absolute_url}} ">{{product.header}}</a>
+                    <p>{{product.title}}</p>
+                  </div>
+                  <!-- Price --> 
+                  <span class="price"><small>{{product.price}} $ </small></span> </div>
+                  <li style="text-align: center;">Author :<span> {{product.author}}</span></li>
+                  <li style="text-align: center;">Brand:<span> {{product.brand}}</span></li>
+              </div>
+                {% endfor  %} 
+            </div>
+          </div>
+          
+          <!-- Shop SideBar -->
+          <div class="col-sm-3">
+            <div class="shop-sidebar"> 
+              
+              <!-- Category -->
+      <h5 class="shop-tittle margin-bottom-30">Category</h5>
+   <h5 class="shop-tittle margin-bottom-30">{{category.name|title}}</h5>
+           
+              <ul class="shop-cate">
+                  {% for c in categories %}
+             <li>
+             <a href="# "> {{c.name|title}} </a>
+               </li>
+                 {% endfor %} 
+              </ul>
+           
+       
+              
+              <!-- TAGS -->
+              <h5 class="shop-tittle margin-top-60 margin-bottom-30">PAUPLAR TAGS</h5>
+              <ul class="shop-tags">
+        
+                  {% for c in categories %}
+             <li>
+             <a href="#"> # {{c.name|title}} </a>
+               </li>
+                 {% endfor %} 
+              </ul>
+           
+
+              </ul>
+              
+              <!-- BRAND -->
+              <h5 class="shop-tittle margin-top-60 margin-bottom-30">brands</h5>
+              <ul class="shop-cate">
+                <li>MSI</li>
+                <li>HP</li>
+                <li>Acer</li>
+              </ul>
+              
+              <!-- SIDE BACR BANER -->
+              <div class="side-bnr margin-top-50"> <img class="img-responsive" src="{% static  'images/slider.jpg' %  %}" alt="">
+                <div class="position-center-center"> <span class="price"><small></small> </span>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+  
+</div>
+
+</body>
+</html>
+{% endblock %}  

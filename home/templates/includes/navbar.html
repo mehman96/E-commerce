@@ -1,0 +1,128 @@
+
+{% load static %}
+{% load i18n %}
+<header>
+
+  
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <div class="sticky">
+      <div class="container"> 
+        
+        <!-- Logo -->
+        <div class="logo"> <a href="{% url 'home:index' %}"><img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" ></a> </div>
+        <nav class="navbar ownmenu testfornavbar" style="display: flex !important; justify-content: center !important;align-items: center !important; ">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></span> </button>
+          </div>
+          
+           <!-- NAV -->
+          <div class="collapse navbar-collapse" id="nav-open-btn">
+            <ul class="nav">
+              <li class="dropdown active"> <a href="{% url 'home:index' %}" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+              </li>
+             
+
+              <!-- <li class="dropdown"><a href=" " class="dropdown-toggle" data-toggle="dropdown">Store</a> -->
+<!--               
+              <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">Pages</a> -->
+            
+                  <li> <a href="{% url 'product:product_list' %}">  Product </a> </li>
+                  <li> <a href="{% url 'blog:blog_list' %}">Blog </a> </li>
+            
+              </li>
+              <li> <a href="{% url 'about:about' %}">About </a> </li>
+            
+             
+              <li> <a href="{% url 'contact:feedback' %}">Contact</a> </li>
+            </ul>
+          </div>
+          
+          {% if user.is_authenticated %}
+          <a style="text-transform: uppercase;letter-spacing: 3px;font-size: 15px;margin-right: 9px;" href="{% url 'account:logout' %}">Logout</a>
+          
+          {% else %}
+          <a style="text-transform: uppercase;letter-spacing: 3px;font-size: 15px;margin-right: 9px;" href="{% url 'account:login' %}">Login</a>
+          {% endif %}
+          <!-- Nav Right -->
+          <div class="nav-right">    
+              <!-- USER INFO -->
+              <ul class="nav nav-pills navbar-right"">
+                <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'account:register'%}" role="button" aria-expanded="false"><i class="far fa-user"></i></a>
+                  
+            
+                <div>
+
+
+              <!-- USER BASKET -->
+
+                  <li class="nav-item dropdown">
+                   
+                 
+                    <a type="button" role="button" href="{% url "shop:basket_summary" %}">
+                    
+
+                    {% with total_qty=basket|length %}
+                        <div id="basket-qty" class="d-inline-flex" style="padding: 1px 1px 1px 5px;position: absolute;
+                        z-index: 3;background: #fde11f;border-radius: 20px;left: 42%;top: 0%;color: #746d6d;font-weight: 600;font-size: 15px;">
+                            {% if total_qty > 0 %}
+                                {{ total_qty }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </div>
+                    {% endwith %} 
+
+                    <i class="fa fa-shopping-basket"></i>
+           
+                </a>
+
+                </li>
+
+
+             
+
+                <li class="dropdown"> <a href="javascript:void(0);" class="search-open"> <i class="fas fa-search"></i>  </a>
+                  <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"> <i class="fas fa-times"></i> </i>
+                    <div class="position-center-center">
+                      <div class="search">
+                        <form>
+                          <input type="search" placeholder="Search Shop">
+                          <button type="submit"><i class="icon-check"></i></button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Language
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+        
+                    {% for lang in languages %}
+                      <li>
+                      <a class="dropdown-item" href="/{{ lang.code }}/">
+                          {{ lang.name_local }}
+                      </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+
+             </ul>
+             
+          </div>
+        </nav>
+      </div>
+      
+    </div>
+  </header>
+
+  

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+
+
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>CHECKOUT</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">SHOP</a></li>
+          <li class="active">CHECKOUT</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!--======= PAGES INNER =========-->
+    <section class="chart-page padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Payments Steps -->
+        <div class="shopping-cart"> 
+          
+          <!-- SHOPPING INFORMATION -->
+          <div class="cart-ship-info">
+            <div class="row"> 
+              
+              <!-- ESTIMATE SHIPPING & TAX -->
+              <div class="col-sm-7">
+                <h6>BILLING DETAILS</h6>
+           
+         
+                <form method="post" > 
+                  {% csrf_token %}      
+                  {% if messageSent %}
+                <p>Thank you. Your order has been received </p>
+                {% endif %}
+                  <ul class="row">
+                    
+                    <!-- Name -->
+                    <li class="col-md-6">
+                      <label> *FIRST NAME
+                        <input type="text" name="first_name" value=""  placeholder="">
+                      </label> 
+                    </li>
+                    <!-- LAST NAME -->
+                    <li class="col-md-6">
+                      <label> *LAST NAME
+                        <input type="text" name="last_name" value="" placeholder="">
+                      </label>
+                    </li>
+                    <li class="col-md-6"> 
+                      <!-- COMPANY NAME -->
+                      <label>COMPANY NAME
+                        <input type="text" name="company" value="" placeholder="">
+                      </label>
+                    </li>
+                    <li class="col-md-6"> 
+                      <!-- ADDRESS -->
+                      <label>*ADDRESS
+                        <input type="text" name="address" value="" placeholder="">
+                      </label>
+                    </li>
+                    <!-- TOWN/CITY -->
+                    <li class="col-md-6">
+                      <label>*TOWN/CITY
+                        <input type="text" name="town" value="" placeholder="">
+                      </label>
+                    </li>
+                    
+                    <!-- COUNTRY -->
+                    <li class="col-md-6">
+                      <label> COUNTRY
+                        <input type="text" name="country" value="" placeholder="">
+                      </label>
+                    </li>
+                    
+                    <!-- EMAIL ADDRESS -->
+                    <li class="col-md-6">
+                      <label> *EMAIL ADDRESS
+                        <input type="text" name="email" value="" placeholder="">
+                      </label>
+                    </li>
+                    <!-- PHONE -->
+                    <li class="col-md-6">
+                      <label> *PHONE
+                        <input type="text" name="phone" value="" placeholder="">
+                      </label>
+                    </li>
+                    
+                    <!-- PHONE -->
+                    <li class="col-md-6">
+                      <button type="submit" value="submit" class="btn" id="btn_submit" onClick="proceed();">SEND Message</button>
+                    </li>
+                    
+                    <!-- CREATE AN ACCOUNT -->
+                
+                  </ul>
+                </form>
+                
+                <!-- SHIPPING info -->
+               
+              </div>
+         
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  
+ 
+  </div>
+  
+ 
+      
+
+  
+</div>
+
+</body>
+</html>
+{% endblock %}  

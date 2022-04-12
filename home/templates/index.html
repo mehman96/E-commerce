@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- multi language -->
+{% load i18n %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!--======= HOME MAIN SLIDER =========-->
+  <section class="home-slider"> 
+  
+    <!-- SLIDE Start -->
+    <div class="tp-banner-container">
+      <div class="tp-banner">
+        <ul>  
+          {% for slider in sliders %}
+          <!-- SLIDE  -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+
+  
+            <!-- MAIN IMAGE --> 
+            <img src="{{ slider.image.url  }}"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">     
+          
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-200" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">{{slider.header}}</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfl font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-120" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:80px; color:#fff;; text-transform:uppercase; white-space: nowrap;"><small class="font-regular">{{slider.desc}}</small> </div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="0" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">
+               </div> 
+              
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="110" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">{{slider.title}} </div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="240" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8;"><a href="{%  url 'product:product_list'  %}" class="btn">SHOP NOW</a> </div>
+          </li>
+            {% endfor %}
+    
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!-- New Arrival -->
+    <section class="padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>new arrival</h4>
+          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span> </div>
+      </div>
+      
+      <!-- New Arrival -->
+      <div class="arrival-block single-img-demos"> 
+        
+        {% for product in products %}
+        <!-- Item -->
+        <div class="item"> 
+          <!-- Images --> 
+          <img class="img-1" src="{{ product.image.url  }}" alt=""> 
+          <!-- Overlay  -->
+          <div class="overlay"> 
+            <!-- Price --> 
+            <span class="price"> {{product.price}} <small>$</small>   </span>
+            <div class="position-center-center"> <a href="images/item-img-1-1.jpg" data-lighter><i class="fas fa-search"></i></a> </div>
+          </div>
+          <!-- Item Name -->
+          <div class="item-name"> <a href="#.">{{product.header}}</a>
+            <p>{{product.desc}}</p>
+          </div>
+        </div>
+        
+     {%  endfor  %}  
+     
+
+    </section>
+    
+    <!-- Popular Products -->
+    <section class="padding-top-50 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>popular products</h4>
+          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide single-img-demos"> 
+          
+        
+            {% for product in products  %}
+          <!-- Item -->
+          <div class="item"> 
+            <!-- Item img -->
+            <div class="item-img" style="height:175px; margin: 0 auto 30px auto;"> <img class="img-1" src="{{ product.image.url  }}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn"><a href="  {{ product.image.url  }}" data-lighter><i class="fas fa-search"></i></a> </i></a> <a href="#." ><i class="fas fa-heart"></i></a></div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a href="#.">{{ product.header }}</a>
+              <p> {{ product.desc }} </p>
+            </div>
+            <!-- Price --> 
+            <span class="price"><small>{{ product.price  }} $ </small></span> </div>
+          
+          <!-- Item -->
+       
+{%  endfor  %}
+
+      </div>
+       
+      <ul class="pagination justify-content-center mb-10 pb-2 pt-2 mt-8" style="display: flex;justify-content: center;float: none;">
+        <li class="prev disabled">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" tabindex="-1" aria-disabled="true" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+            justify-content: center;align-items: center;font-size: 12px;border-radius: 0px !important;border: none;background: #2d3a4b;color: #fff;padding: 0px;text-align: center; font-size: 12px; cursor: pointer;"
+            >
+                <i class="w-icon-long-arrow-left"></i>Prev
+            </a>
+                <!-- <a href="?page=1"></a> -->
+
+            {% endif %}
+        </li>
+        {% for page in page_obj.paginator.page_range %}
+                    {% if page is page_obj.number %}
+                        <li class="page-item active"><a class="page-link" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                          justify-content: center;align-items: center;font-size: 12px;" href="#">{{page}}</a></li>
+                    {% else %}
+                        <li class="page-item"><a href="?page={{page}}" class='page-link' style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                          justify-content: center;align-items: center;font-size: 12px;">{{page}}</a></li>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" ></a>
+                    {% endif %}
+                {% endfor %}
+        <li class="next">
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" aria-label="Next" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+            justify-content: center;align-items: center;font-size: 12px;">
+                Next<i class="w-icon-long-arrow-right"></i>
+            </a>
+            {% endif %}
+        </li>
+    </ul>
+
+      
+
+    </section>
+    
+
+  
+  </div>
+  
+
+</div>
+
+</body>
+</html>
+{% endblock %}

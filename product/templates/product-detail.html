@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {{ product.name }} 
+ {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="M_Adnan">
+    <title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+
+
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="position-center-center">
+            <div class="ldr"></div>
+        </div>
+    </div>
+
+    <!-- Wrap -->
+    <div id="wrap">
+
+
+        <!--======= SUB BANNER =========-->
+        <section class="sub-bnr" data-stellar-background-ratio="0.5">
+            <div class="position-center-center">
+                <div class="container">
+                    <h4>COMPUTER</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam</p>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Data</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Popular Products -->
+            <section class="padding-top-100 padding-bottom-100">
+                <div class="container">
+
+                    <!-- SHOP DETAIL -->
+                    <div class="shop-detail">
+                        <div class="row">
+
+                            <!-- Popular Images Slider -->
+                            <div class="col-md-7">
+
+                                <!-- Images Slider -->
+                                <div class="images-slider" style="background: none;">
+                                    <ul class="slides">
+                                        <li data-thumb="images/large-img-1.jpg"> <img class="img-responsive" src="{{product.image.url  }}" alt="" style="    width: 85%;"> </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- COntent -->
+                            <div class="col-md-5">
+                                <h4{{product.title}}</h4>
+                                    <span class="price"><small></small>{{product.price}} $ </span> {{product.brand}} {{product.title }} </span>
+
+                                    <!-- Sale Tags -->
+                                    <!-- <div class="on-sale"> 10% <span>OFF</span> </div> -->
+                                    <ul class="item-owner">
+                                        <li>Author :<span> {{product.author}}</span></li>
+                                        <li>Brand:<span> {{product.brand}}</span></li>
+                                    </ul>
+
+                                    <!-- Item Detail -->
+                                    <p> {{product.about_desc |safe }}</p>
+
+                                    <!-- Short By -->
+                                    <div class="some-info">
+                                        <ul class="row margin-top-30">
+                                            <li class="col-xs-6">
+                                                <div class="col-6" style="font-size:20px">
+                                                    <label style="margin-right: 12px;" for="select">Qty</label>
+                                                    <select id="select">
+                                             <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                             </select>
+
+                                                </div>
+                                            </li>
+
+
+               
+     <li class="col-xs-6"> <button style="font-size: 15px;" type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm"><i style="margin-right: 7px;
+        font-size: 21px;" class="fas fa-shopping-basket"></i>Add to basket</button><li>
+     <li style="float:right;" class="col-xs-6"> <button style="font-size: 15px; background: white;color: #2d3a4b;border: 2px solid#2d3a4b;" type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm"><i style="    margin-right: 7px;
+        font-size: 21px;" class="fa fa-heart"></i>Add to favorite</button><li>
+
+              
+
+                                 
+
+                                        <!-- Social Icons -->
+                                        <ul class="social_icons">
+                                            <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                                            <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                                            <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+                                            <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                                            <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                </script>
+       
+        </section>
+
+        <!-- Popular Products -->
+        <section class="light-gray-bg padding-top-150 padding-bottom-150">
+            <div class="container">
+
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>YOU MAY LIKE IT</h4>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span> </div>
+
+                <!-- Popular Item Slide -->
+                <div class="papular-block block-slide single-img-demos">
+                    {% for product in products %}
+                    <!-- Item -->
+                    <div class="item">
+                        <!-- Item img -->
+                        <div class="item-img" style="height: 256px;display: flex;
+                        justify-content: center;align-items: center;margin: 20px auto;"> <img class="img-1" src="{{ product.image.url  }}" alt="">
+                            <!-- Overlay -->
+                            <div class="overlay">
+                                <div class="position-center-center">
+                                    <div class="inn"><a href="{{ product.image.url  }}" data-lighter><i class="fas fa-search"></i></a>  <a href="#."><i class="fas fa-heart"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item Name -->
+                        <div class="item-name"> <a href="#.">{{product.header}}</a>
+                            <p>{{product.title}}</p>
+                        </div>
+
+                        <!-- Price -->
+                        <span class="price"><small></small>{{product.price}} $ </span>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).on('click', '#add-button', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "shop:basket_add" %}',
+                data: {
+                    productid: $('#add-button').val(),
+                    productqty: $('#select option:selected').text(),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: 'post'
+                },
+                success: function(json) {
+                    document.getElementById("basket-qty").innerHTML = json.qty
+                },
+                error: function(xhr, errmsg, err) {}
+            });
+        })
+    </script>
+</body>
+
+</html>
+{% endblock %}

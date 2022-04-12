@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5" style="background:url({% static 'images/about-bg.jpg' %}) object-fit:cover   center center no-repeat">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>ABOUT PAVSHOP</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="#">{% trans "Home"  %}</a></li>
+          <li class="active">ABOUT</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!-- History -->
+    <section class="history-block padding-top-100 padding-bottom-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-10 center-block">
+            <div class="col-sm-10 center-block">
+              <h4>A Brief History</h4>
+              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
+                <br>
+                Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula. </p>
+              
+              <!-- IMG -->
+              <div class="relative"> <img class="img-responsive margin-top-80 margin-bottom-80" src="{% static 'images/about-bg.jpg'%}" alt="">
+                <div class="position-center-center"> <span class="huge-text">our team
+                  united by love</span> </div>
+              </div>
+              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
+                <br>
+                Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula. </p>
+              <img class="margin-top-50" src="{% static 'images/signature.jpg'%}" alt="" > </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Culture BLOCK -->
+    <section class="cultur-block">
+      <ul>
+        <li> <img src="{% static 'images/images/cultur-img-1.jpg'%}" alt="" > </li>
+        <li> <img src="{% static 'images/images/cultur-img-2.jpg'%}" alt="" > </li>
+        <li> <img src="{% static 'images/images/cultur-img-3.jpg'%}" alt="" > </li>
+        <li> <img src="{% static 'images/images/cultur-img-4.jpg'%}" alt="" > </li>
+      </ul>
+      
+      <!-- Culture Text -->
+      <div class="position-center-center">
+        <div class="container">
+          <div class="col-sm-6 center-block">
+            <h4>awesome work culture</h4>
+            <p>Phasellus lacinia fermentutm bibendum. Interdum et malante ipuctus non. Nulla lacinia,
+              eros vel fermentum consectetur, ris dolor in ex. </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- OUR TEAM -->
+    <section class="our-team our-team-small  light-gray-bg padding-top-150 padding-bottom-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4"> 
+            
+            <!-- HEADING -->
+            <div class="heading style-left">
+              <h4>our Team</h4>
+              <span>United by love & help to build great brands</span> </div>
+          </div>
+          
+          <!-- TEAM -->
+          <div class="col-lg-8">
+            <ul class="row">
+              
+               {% for team in teams %}
+              <!-- Member -->
+              <li class="col-md-4 text-center animate fadeInUp" data-wow-delay="0.6s">
+                <article> 
+                  <!-- abatar -->
+                  <div class="avatar"> <img class="img-circle" src="{{team.image.url}}" alt="" > 
+                    <!-- Team hover -->
+                    <div class="team-hover">
+                      <div class="position-center-center">
+                        <div class="social-icons"> <a href="{{ team.fb_url }}"><i class="fab fa-facebook-f"></i></a>
+                           <a href="{{ team.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ team.instagram_url }}"><i class="fab fa-instagram"></i></i></a> 
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Team Detail -->
+                  <div class="team-names">
+                    <h6>{{ team.header }}</h6>
+                    <p>{{ team.desc }}</p>
+                  </div>
+                </article>
+              </li>
+              
+          {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    
+    <!-- Client Img  -->
+    <section class="fun-facts padding-top-150 padding-bottom-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4"> 
+            
+            <!-- HEADING -->
+            <div class="heading style-left padding-right-20">
+              <h4>few Facts</h4>
+              <span>Awesome Numbers are good :)</span> </div>
+          </div>
+          
+          <!-- FUN FACTS -->
+          <div class="col-lg-8">
+            <ul class="row">
+              
+              <!-- SALES -->
+              <li class="col-sm-4"> <i class="icon-handbag"></i> <span>457</span>
+                <h5>sales</h5>
+              </li>
+              
+              <!-- Products -->
+              <li class="col-sm-4"> <i class="icon-grid"></i> <span>571</span>
+                <h5>products</h5>
+              </li>
+              
+              <!-- Clients -->
+              <li class="col-sm-4"> <i class="icon-users"></i> <span>289</span>
+                <h5>clients</h5>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- TWEET -->
+   
+    
+
+</div>
+
+
+
+</body>
+</html>
+
+{% endblock %}

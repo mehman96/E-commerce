@@ -1,0 +1,213 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="M_Adnan">
+    <title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+
+
+
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="position-center-center">
+            <div class="ldr"></div>
+        </div>
+    </div>
+
+    <!-- Wrap -->
+    <div id="wrap">
+
+
+
+        <!--======= SUB BANNER =========-->
+        <section class="sub-bnr" data-stellar-background-ratio="0.5">
+            <div class="position-center-center">
+                <div class="container">
+                    <h4>PAVSHOP blog list</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam</p>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">BLOG</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Blog List -->
+            <section class="blog-list blog-list-3 padding-top-100 padding-bottom-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+
+
+                            <article>
+                                <div class="row">
+                                    {% for blog in blogs %}
+                                    <div class="col-sm-5">
+                                        <!-- Post Img -->
+                                        <!-- <a href="{"></a> -->
+                                        <img class="img-responsive" src="{{ blog.image.url }}" alt="">
+                                        <div class="col-sm-12">
+                                            <!-- Tittle -->
+                                            <div class="post-tittle left"> <a href="{{blog.get_absolute_url}}" class="tittle">Blog By PAVSHOP</a>
+                                                <!-- Post Info -->
+<span><i class="primary-color icon-user"></i> {{blog.author}}</span> <span><i class="primary-color icon-calendar"></i> {{ blog.created_date}}</span> <span><i class="primary-color icon-bubble"></i> 
+                                            <!-- Post Content -->
+                                            <div class="text-left">
+                                                <p>{{blog.author_comment| safe }}</p>
+                                                <a href="{{blog.get_absolute_url}}" class="red-more">READ MORE</a> </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                    {% endfor %}
+                            </article>
+
+
+
+                            <!-- Pagination -->
+                            <ul class="pagination justify-content-center mb-10 pb-2 pt-2 mt-8" style="display: flex;justify-content: center;float: none;">
+                                <li class="prev disabled">
+                                    {% if page_obj.has_previous %}
+                                    <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" tabindex="-1" aria-disabled="true" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                                    justify-content: center;align-items: center;font-size: 12px;border-radius: 0px !important;border: none;background: #2d3a4b;color: #fff;padding: 0px;text-align: center; font-size: 12px; cursor: pointer;"
+                                    >
+                                        <i class="w-icon-long-arrow-left"></i>Prev
+                                    </a>
+                                        <!-- <a href="?page=1"></a> -->
+                        
+                                    {% endif %}
+                                </li>
+                                {% for page in page_obj.paginator.page_range %}
+                                            {% if page is page_obj.number %}
+                                                <li class="page-item active"><a class="page-link" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                                                  justify-content: center;align-items: center;font-size: 12px;" href="#">{{page}}</a></li>
+                                            {% else %}
+                                                <li class="page-item"><a href="?page={{page}}" class='page-link' style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                                                  justify-content: center;align-items: center;font-size: 12px;">{{page}}</a></li>
+                                                <a href="?page={{ page_obj.paginator.num_pages }}" ></a>
+                                            {% endif %}
+                                        {% endfor %}
+                                <li class="next">
+                                    {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}" aria-label="Next" style="margin: 0 5px;height: 33px;width: 33px;line-height: 31px;
+                                    justify-content: center;align-items: center;font-size: 12px;">
+                                        Next<i class="w-icon-long-arrow-right"></i>
+                                    </a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Sider Bar -->
+                        <div class="col-md-3">
+
+                            <!-- SEARCH -->
+                            <div class="search">
+                                <input class="form-control" type="search" placeholder="Search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                            <div class="shop-sidebar">
+
+                                <!-- Category -->
+                                <h5 class="shop-tittle margin-bottom-30">category</h5>
+                                
+                                <ul class="shop-cate">
+                                    {% for c in categories %}
+                               <li>
+                               <a href="#">  {{c.name|title}} </a>
+                                 </li>
+                                   {% endfor %} 
+                                </ul>
+                             
+                     
+
+                                <!-- Recent Post -->
+                                <h5 class="shop-tittle margin-top-60 margin-bottom-30">recent post</h5>
+                                <ul class="papu-post margin-top-20">
+                                    {% for blog in blogs %}
+                                    <li class="media">
+                                        <div class="media-left">
+                                            <a href="#"> <img class="media-object" src="{{ blog.image.url }} " alt=""></a>
+                                        </div>
+                                        <div class="media-body"> <a class="media-heading" href="{% url 'blog:blog_list'  %}">   <p>{{blog.author}}</p> </a> <span>Posted on {{blog.created_date}}</span> </div>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+
+                                <!-- TAGS -->
+                                <h5 class="shop-tittle margin-top-60 margin-bottom-30">PAUPLAR TAGS</h5>
+                                <ul class="shop-tags">
+                                   
+                                        {% for c in categories %}
+                                   <li>
+                                   <a href="#"> #{{c.name|title}} </a>
+                                     </li>
+                                       {% endfor %} 
+                                    </ul>
+                                 
+                      
+
+                                <!-- BRAND -->
+                                <h5 class="shop-tittle margin-top-60 margin-bottom-30">archives</h5>
+                                <ul class="shop-cate">
+                                    <li><a href="#."> January 2022 </a></li>
+                                    <li><a href="#."> February 2022 </a></li>
+                                    <li><a href="#."> March 2022 </a></li>
+                                    <li><a href="#."> April 2022 </a></li>
+                                    <li><a href="#."> May 2022 </a></li>
+                                </ul>
+
+                                <!-- SIDE BACR BANER -->
+                                <div class="side-bnr margin-top-50"> <img class="img-responsive" src="{%  static 'images/slider.jpg'  %}" style="height: 255px;" alt="">
+                                    <div class="position-center-center"> <span class="price"><small>$</small>299</span>
+                                        <div class="bnr-text">look hot with style
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Culture BLOCK -->
+            <section class="cultur-block">
+                <ul>
+                    <li> <img src="{% static 'images/detail-bg.jpg' %}" alt="" style ='height: 260px;'> </li>
+                    <li> <img src="{% static 'images/detail-bg.jpg' %}" alt="" style ='height: 260px;'> </li>
+                    <li> <img src="{% static 'images/detail-bg.jpg' %}" alt="" style ='height: 260px;'> </li>
+                    <li> <img src="{% static 'images/detail-bg.jpg' %}" alt="" style ='height: 260px;'> </li>
+                </ul>
+
+                <!-- Culture Text -->
+                <div class="position-center-center">
+                    <div class="container">
+                        <div class="col-sm-6 center-block">
+                            <h4>FOLLOW US @ INSTAGRAM</h4>
+                            <p>Phasellus lacinia fermentutm bibendum. Interdum et malante ipuctus non. Nulla lacinia, eros vel fermentum consectetur, ris dolor in ex. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+</body>
+
+</html>
+{% endblock %}
