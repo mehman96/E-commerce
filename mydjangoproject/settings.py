@@ -1,18 +1,19 @@
 
 from pathlib import Path
 import os,sys
+import django_heroku
 
-
+django_heroku.settings(locals())
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-n!n*pn*ece+*v7j@f#+89@h%7)ly+jo$^*mn1pynx64)fb!w2z'
 
 
-DEBUG = True
+DEBUG = False
 
 
 # icazer verdiyimiz IP
-# ALLOWED_HOSTS = ['67.205.160.21']
+ALLOWED_HOSTS = ['https://pavshop.herokuapp.com']
 
 AUTH_USER_MODEL = 'account.User'
 # Application definition
@@ -148,8 +149,8 @@ WSGI_APPLICATION = 'mydjangoproject.wsgi.application'
 
 
 
-if DEBUG:
-    DATABASES = {
+
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
@@ -157,18 +158,6 @@ if DEBUG:
 }
 
 
-
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'admin',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
 
 
 AUTHENTICATION_BACKENDS = (
